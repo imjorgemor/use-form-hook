@@ -1,8 +1,8 @@
 # useHookForm
-✅  register (pending management of checkboxes, selects and files)
+✅  register
 ✅  unregister (pending to develop options for v2)
 ✅  formState (pending to incorporate isValidating, validatingFields, isLoading for v2)
-✅   watch
+✅  watch
 ✅  handleSubmit
 ✅  reset (pending develop keep state options)
 ✅  resetField (pending develop keep state options)

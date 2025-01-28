@@ -40,17 +40,21 @@ export default tseslint.config(
             "@typescript-eslint/member-delimiter-style": [
                 "warn",
                 {
-                  "multiline": {
-                    "delimiter": "semi", // Use semicolon for multiline members
-                    "requireLast": true  // Ensure the last member ends with a semicolon
-                  },
-                  "singleline": {
-                    "delimiter": "semi", // Use semicolon for single-line members
-                    "requireLast": true  // Ensure the last member ends with a semicolon
-                  }
+                    "multiline": {
+                        "delimiter": "semi", // Use semicolon for multiline members
+                        "requireLast": true  // Ensure the last member ends with a semicolon
+                    },
+                    "singleline": {
+                        "delimiter": "semi", // Use semicolon for single-line members
+                        "requireLast": true  // Ensure the last member ends with a semicolon
+                    }
                 }
-              ]
-
+            ],
+            'react-hooks/rules-of-hooks': 'error',
+            'react-hooks/exhaustive-deps': 'error',
+            'react/display-name': 'warn',
+            'react/prop-types': 'off',
+            'no-console': ['error'],
         },
     },
 )
