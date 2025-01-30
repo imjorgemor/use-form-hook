@@ -33,7 +33,7 @@ export function useFormHook<
         isSubmitSuccessful: false,
         isSubmitted: false,
         isSubmitting: false,
-        isValid: false,
+        isValid: !props.resolver && !props.errors && props.defaultValues ?true : false,
         isValidating: false,
         submitCount: 0,
         touchedFields: {},
@@ -63,6 +63,7 @@ export function useFormHook<
     useSubscribe({
         subject: control._subjects.stateSubject,
         next: (value: Partial<Record<keyof TFieldValues, string>>) => {
+            console.log(value)
             const currentState: FormState<TFieldValues> = formControlRef.current!.formState;
             const nextState: FormState<TFieldValues> = { ...currentState, ...value };
             let shouldUpdate = false;

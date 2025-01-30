@@ -53,7 +53,7 @@ export function createFormControl<
         isSubmitSuccessful: false,
         submitCount: 0,
         // general state
-        isValid: false,
+        isValid: !props.resolver && !props.errors && props.defaultValues ?true : false,
         isDirty: false,
         // rest formState
         isValidating: false,
@@ -76,7 +76,6 @@ export function createFormControl<
     }> = createSubject();
 
 
-
     const _updateIsValid = async (updateState?: boolean) => {
         if (_options.resolver) {
             let tempErrorState: Partial<Record<keyof TFieldValues, string>> = {};
@@ -94,6 +93,12 @@ export function createFormControl<
                 if (updateState) {
                     stateSubject.next({ isValid });
                 }
+            }
+        } else {
+            if (!_formState.isValid) {
+                _formState.isValid = true;
+                console.log('here', _formValues, _formState.isValid)
+                stateSubject.next({ errors: {} , isValid: true, });
             }
         }
     };
@@ -229,7 +234,7 @@ export function createFormControl<
             }
             return;
         }
-        
+
         const fieldError = await _executeSchema(name) || false;
         // fill formState error
         if (fieldError) {
@@ -266,13 +271,14 @@ export function createFormControl<
         name: TFieldName,
         options?: RegisterOptions
     ) => {
-
+        
         return {
             name: name as TFieldName & string,
             onChange,
             onBlur: onChange,
             ref: (ref: FieldElement | null) => {
                 if (ref) {
+                    register(name, options)
                     if (ref.type === 'file') {
                         return;
                     } else {
