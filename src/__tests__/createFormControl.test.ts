@@ -1,14 +1,14 @@
 import { createFormControl } from "../createFormControl";
 
 describe('createFormControl', () => {
-    test('should initialize form and set is valid true', async () => {
+    test('should initialize form, set initial values and update state to valid', async () => {
         const { register, control } = createFormControl({
             defaultValues: {
-                playaction: 'playaction',
+                defaultValue: 'defaultValue',
             },
         });
 
-        register('playaction', {});
+        register('defaultValue', {});
 
         control._updateIsValid()
 

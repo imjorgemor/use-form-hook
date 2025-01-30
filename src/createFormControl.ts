@@ -97,7 +97,6 @@ export function createFormControl<
         } else {
             if (!_formState.isValid) {
                 _formState.isValid = true;
-                console.log('here', _formValues, _formState.isValid)
                 stateSubject.next({ errors: {} , isValid: true, });
             }
         }
