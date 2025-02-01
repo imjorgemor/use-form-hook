@@ -208,7 +208,7 @@ export type UseFormGetFieldState<TFieldValues extends FieldValues> = <
 >(
     name: TFieldName,
 ) => {
-    invalid: boolean;
+    isValid: boolean;
     isDirty: boolean;
     isTouched: boolean;
     //isValidating: boolean;

@@ -381,7 +381,7 @@ export function createFormControl<
     const getFieldState: UseFormGetFieldState<TFieldValues> = (
         name,
     ) => ({
-        invalid: _formState.errors[name] ? true : false,
+        isValid: _formState.errors[name] ? true : false,
         isDirty: _formState.dirtyFields[name] ? true : false,
         error: _formState.errors[name] ?? undefined,
         //isValidating: !!get(_formState.validatingFields, name),
