@@ -42,6 +42,7 @@ const resolver = {
 
 function App() {
     const { register, formState, ...rest } = useFormHook({
+        //mode:'all',
         defaultValues: { username: undefined },
         resolver
     })

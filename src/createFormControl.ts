@@ -228,6 +228,7 @@ export function createFormControl<
         //manage errors and formState
         if (_options.mode === VALIDATION_MODE.onSubmit || !_options.resolver?.[name]) {
             //manage watched inputs
+            _updateIsValid(true);
             if (_namesWatched.has(name)) {
                 valuesSubject.next({ name, value });
             }
