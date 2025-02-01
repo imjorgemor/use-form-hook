@@ -55,6 +55,8 @@ describe('formState.isValid', ()=>{
     })
 
     test('should form be invalid if there defaultValues are set to undfined and a resolver is provided', async ()=>{
+        const user = userEvent.setup();
+
         const App = () => {
             const {
                 register,
@@ -77,5 +79,9 @@ describe('formState.isValid', ()=>{
         render(<App />);
 
         expect(screen.getByText('isValid:false')).toBeDefined();
+
+        await user.type(screen.getByRole('textbox'), 'test');
+
+        expect(screen.getByText('isValid:true')).toBeDefined();
     })
 })
