@@ -40,6 +40,24 @@ describe('reset', () => {
             test: 'test',
         });
         
-        expect(result.current.formState.isValid).toBeTruthy();;
+        expect(result.current.formState.isValid).toBeTruthy();
+    });
+
+    test('should set defaultValues defined when hook is initialized', async () => {
+        const { result } = renderHook(() =>
+            useFormHook<{
+                test: string;
+            }>({defaultValues: {test: 'testDefaultValue'}}),
+        );
+
+        result.current.register('test');
+
+        act(() => result.current.reset());
+
+        expect(result.current.getValues()).toEqual({
+            test: 'testDefaultValue',
+        });
+        
+        expect(result.current.formState.isValid).toBeTruthy();
     });
 })

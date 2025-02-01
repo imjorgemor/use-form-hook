@@ -43,11 +43,10 @@ const resolver = {
 function App() {
     const { register, formState, ...rest } = useFormHook({
         mode: 'all',
-        //defaultValues: { username: undefined, email: undefined, conditions: false, attachement: undefined },
+        defaultValues: { username: undefined, email: undefined, conditions: false, attachement: undefined },
         resolver
     })
     const { errors } = formState;
-    console.log(formState)
 
     return (
         <main>
@@ -102,9 +101,9 @@ function App() {
                 <div>
                     <button className="border-2 rounded-md py-2 px-8" type="button" onClick={() => console.log('Current Values:', rest.getValues())}>log current values</button>
                 </div>
-                {/* <div>
-                        <button className="border-2 rounded-md py-2 px-8" type="button" onClick={() => rest.reset({username:'testname'})}>reset form with valid values</button>
-                    </div> */}
+                <div>
+                        <button className="border-2 rounded-md py-2 px-8" type="button" onClick={() => rest.reset()}>reset form with valid values</button>
+                    </div>
                 <div>
                     <button className="border-2 rounded-md py-2 px-8" type="button" onClick={() => rest.setError('username', 'name is required')}>set error</button>
                 </div>

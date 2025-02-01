@@ -63,7 +63,6 @@ export function useFormHook<
     useSubscribe({
         subject: control._subjects.stateSubject,
         next: (value: Partial<Record<keyof TFieldValues, string>>) => {
-            console.log(value)
             const currentState: FormState<TFieldValues> = formControlRef.current!.formState;
             const nextState: FormState<TFieldValues> = { ...currentState, ...value };
             let shouldUpdate = false;
