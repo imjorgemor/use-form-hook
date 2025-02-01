@@ -273,7 +273,7 @@ export function createFormControl<
         name: TFieldName,
         options?: RegisterOptions
     ) => {
-        
+
         return {
             name: name as TFieldName & string,
             onChange,

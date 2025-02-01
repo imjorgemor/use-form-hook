@@ -1,7 +1,7 @@
 import React from 'react';
 import { act, renderHook } from "@testing-library/react";
-import { useFormHook } from "../useFormHook";
 
+import { useFormHook } from "../useFormHook";
 
 describe('setValue', () => {
     test('should not setValue for unmounted state with shouldUnregister', () => {
