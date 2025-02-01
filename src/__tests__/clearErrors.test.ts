@@ -1,11 +1,4 @@
-import React from 'react';
-import {
-    act,
-    render,
-    renderHook,
-    screen,
-    waitFor,
-} from '@testing-library/react';
+import { act, renderHook } from '@testing-library/react';
 
 import { useFormHook } from '../useFormHook';
 
@@ -37,7 +30,7 @@ describe('clearErrors', () => {
         act(() => result.current.setError('input2', error));
         expect(result.current.formState.errors).toEqual({
             input: error,
-            input1:  error,
+            input1: error,
             input2: error
         });
 
@@ -59,11 +52,11 @@ describe('clearErrors', () => {
         act(() => result.current.setError('input2', error));
         expect(result.current.formState.errors).toEqual({
             input: error,
-            input1:  error,
+            input1: error,
             input2: error
         });
 
         act(() => result.current.clearErrors(['input', 'input1']));
-        expect(result.current.formState.errors).toEqual({input2: error});
+        expect(result.current.formState.errors).toEqual({ input2: error });
     });
 });
