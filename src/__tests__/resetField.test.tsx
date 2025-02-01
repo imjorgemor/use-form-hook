@@ -34,14 +34,10 @@ describe('resetField', () => {
 
         await user.type(screen.getByRole('textbox'), '1234')
 
-        expect((screen.getByRole('textbox') as HTMLInputElement).value).toEqual(
-            '1234',
-        );
+        expect((screen.getByRole('textbox') as HTMLInputElement).value).toEqual('1234');
 
         await user.click(screen.getByRole('button'));
 
-        expect((screen.getByRole('textbox') as HTMLInputElement).value).toEqual(
-            '',
-        );
+        expect((screen.getByRole('textbox') as HTMLInputElement).value).toEqual('');
     });
 });

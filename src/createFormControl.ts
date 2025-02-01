@@ -132,7 +132,9 @@ export function createFormControl<
         _formState.errors[name] = error;
         _formState.isValid = false;
         // Notify subscribers
-        _updateIsDirty();
+        if(!_formState.isDirty) {
+            _updateIsDirty();
+        }
         stateSubject.next({ ..._formState, errors: _formState.errors, isValid: false });
     };
 
@@ -283,7 +285,6 @@ export function createFormControl<
                     } else {
                         ref.value = _formValues[name] ?? '';
                         _fields[name as string] = ref;
-                        _updateIsValid(true);
                     }
                 }
             },

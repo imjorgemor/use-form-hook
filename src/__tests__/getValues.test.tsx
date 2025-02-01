@@ -27,9 +27,7 @@ describe('getValues', () => {
 
         rerender(<Component />);
 
-        expect(values).toEqual({
-            test: 'test',
-        });
+        expect(values).toEqual({ test: 'test' });
     });
 
     test('should get all field values', () => {

@@ -42,13 +42,12 @@ const resolver = {
 
 function App() {
     const { register, formState, ...rest } = useFormHook({
-        //mode:'all',
-        defaultValues: { username: undefined },
+        mode: 'all',
+        //defaultValues: { username: undefined },
         resolver
     })
-    const {errors} = formState;
-    console.log(errors)
-    console.log({ rest })
+    const { errors } = formState;
+    //console.log(formState)
 
     return (
         <main>
@@ -65,16 +64,20 @@ function App() {
                     <div>
                         <input type='submit' className="border-2 rounded-md py-2 px-8" />
                     </div>
-                    <div>
-                        isValid:{JSON.stringify(formState.isValid)}
-                    </div>
-                    <div>
-                        <button className="border-2 rounded-md py-2 px-8" type="button" onClick={() => console.log('Current Values:', rest.getValues())}>log current values</button>
-                    </div>
-                    <div>
-                        <button className="border-2 rounded-md py-2 px-8" type="button" onClick={() => rest.reset({username:'testname'})}>reset form with valid values</button>
-                    </div>
+
                 </form>
+                <div>
+                    isValid:{JSON.stringify(formState.isValid)}
+                </div>
+                <div>
+                    <button className="border-2 rounded-md py-2 px-8" type="button" onClick={() => console.log('Current Values:', rest.getValues())}>log current values</button>
+                </div>
+                {/* <div>
+                        <button className="border-2 rounded-md py-2 px-8" type="button" onClick={() => rest.reset({username:'testname'})}>reset form with valid values</button>
+                    </div> */}
+                <div>
+                    <button className="border-2 rounded-md py-2 px-8" type="button" onClick={() => rest.setError('username', 'name is required')}>set error</button>
+                </div>
             </section>
         </main>
     )

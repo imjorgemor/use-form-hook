@@ -17,9 +17,7 @@ describe('register', () => {
 
         await act(async () => {
             await result.current.handleSubmit((data) => {
-                expect(data).toEqual({
-                    test: 'testData',
-                });
+                expect(data).toEqual({test: 'testData'});
             })({
                 preventDefault: () => { },
                 persist: () => { },

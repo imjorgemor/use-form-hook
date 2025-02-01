@@ -19,30 +19,27 @@ describe('reset', () => {
         render(<App />);
 
         act(() =>
-            methods.reset({
-                test: 'test',
-            }),
+            methods.reset({ test: 'test' })
         );
 
-        expect(methods.getValues()).toEqual({
-            test: 'test',
-        });
+        expect(methods.getValues()).toEqual({ test: 'test' });
     });
 
     test('should set default value if values is specified to first argument', async () => {
         const { result } = renderHook(() =>
-          useFormHook<{
-            test: string;
-          }>(),
+            useFormHook<{
+                test: string;
+            }>(),
         );
-    
+
         result.current.register('test');
-    
+
         act(() => result.current.reset({ test: 'test' }));
-    
+
         expect(result.current.getValues()).toEqual({
-          test: 'test',
+            test: 'test',
         });
+        
         expect(result.current.formState.isValid).toBeTruthy();;
-      });
+    });
 })
