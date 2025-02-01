@@ -1,5 +1,5 @@
 import React from 'react';
-import { act, render, screen, renderHook } from '@testing-library/react';
+import { act, render, renderHook } from '@testing-library/react';
 
 import { useFormHook } from '../useFormHook';
 
