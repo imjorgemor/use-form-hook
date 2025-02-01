@@ -71,6 +71,9 @@ function App() {
                     <div>
                         <button className="border-2 rounded-md py-2 px-8" type="button" onClick={() => console.log('Current Values:', rest.getValues())}>log current values</button>
                     </div>
+                    <div>
+                        <button className="border-2 rounded-md py-2 px-8" type="button" onClick={() => rest.reset({username:'testname'})}>reset form with valid values</button>
+                    </div>
                 </form>
             </section>
         </main>
