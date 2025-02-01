@@ -15,7 +15,7 @@
 
 ✅🧪  setError (pending to incorporate if should focus or nah)
 
-✅   clearErrors
+✅🧪   clearErrors
 
 ✅🧪  setValue (pending add options if should validate, should dirty, should touch)
 
