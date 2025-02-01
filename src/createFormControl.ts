@@ -476,6 +476,7 @@ export function createFormControl<
                 event.preventDefault();
                 event.persist();
             }
+            console.log('initializing handleSubmit')
 
             _formState.isSubmitting = true;
             stateSubject.next({
@@ -504,6 +505,7 @@ export function createFormControl<
                 _formState.isSubmitSuccessful = false;
                 _formState.submitCount = _formState.submitCount + 1;
                 _formState.isValid = true;
+                console.log('here')
 
                 stateSubject.next({
                     isSubmitted: true,
@@ -533,6 +535,7 @@ export function createFormControl<
 
             // execute success callback
             try {
+                console.log('call callback')
                 await callback(fieldValues, event);
 
             } catch (error) {
