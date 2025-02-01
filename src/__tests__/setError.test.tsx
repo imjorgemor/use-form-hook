@@ -45,5 +45,6 @@ describe('setError', () => {
         await user.click(screen.getByRole('button'));
 
         expect(await screen.findByText('no')).toBeDefined();
+        //note: in case of setError manually and no resolver pls recall to remove the error manually
     });
 });

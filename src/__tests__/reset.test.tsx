@@ -4,7 +4,7 @@ import { act, render, renderHook } from '@testing-library/react';
 import { useFormHook } from '../useFormHook';
 
 describe('reset', () => {
-    it('should reset form value', () => {
+    test('should reset form value', () => {
         let methods: any;
         const App = () => {
             methods = useFormHook<{
