@@ -277,7 +277,6 @@ export function createFormControl<
             onBlur: onChange,
             ref: (ref: FieldElement | null) => {
                 if (ref) {
-                    register(name, options)
                     if (ref.type === 'file') {
                         return;
                     } else {
