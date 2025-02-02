@@ -261,7 +261,7 @@ export function createFormControl<
         let result: false | string = false;
         if (_options.resolver?.[name]) {
             const value = _formValues[name];
-            result = _options.resolver[name](value);
+            result = _options.resolver[name](value, _formValues);
             return result;
         }
         return result;

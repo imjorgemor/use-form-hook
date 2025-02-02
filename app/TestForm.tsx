@@ -1,3 +1,4 @@
+import React from "react";
 import { useFormHook } from "../src/useFormHook"
 
 const resolver = {
@@ -40,7 +41,7 @@ const resolver = {
 };
 
 
-function App() {
+const TestForm = ()=> {
     const { register, formState, ...rest } = useFormHook({
         mode: 'all',
         defaultValues: { username: undefined, email: undefined, conditions: false, attachement: undefined },
@@ -115,4 +116,4 @@ function App() {
     )
 }
 
-export default App
+export {TestForm};
