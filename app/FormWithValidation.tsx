@@ -1,6 +1,23 @@
 import React from "react";
 import { useFormHook } from "../src/useFormHook"
 
+const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
+    ({ className, type, ...props }, ref) => {
+        return (
+            <input
+                type={type}
+                className=
+                "flex h-10 w-full rounded-md border border-input bg-slate-300 px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+                ref={ref}
+                {...props}
+            />
+        )
+    }
+)
+Input.displayName = "Input"
+
+export { Input }
+
 const resolver = {
     username: (value: string) => {
         if (value === '' || value === undefined || value === null) {
@@ -40,8 +57,7 @@ const resolver = {
     }
 };
 
-
-const TestForm = ()=> {
+const FormWithValidation = () => {
     const { register, formState, ...rest } = useFormHook({
         mode: 'all',
         defaultValues: { username: undefined, email: undefined, conditions: false, attachement: undefined },
@@ -49,33 +65,35 @@ const TestForm = ()=> {
     })
     const { errors } = formState;
 
+    const onSubmit = (values: any) => {
+        console.log('submited', values);
+        //reset();
+    };
+
     return (
         <main>
             <section className="px-4 py-4 max-w-[80%]">
-                <form className="flex flex-col gap-2">
+                <form className="flex flex-col gap-2" onSubmit={rest.handleSubmit(onSubmit)}>
                     <div>
-                        <input
+                        <Input
                             {...register('username')}
                             type="text"
-                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
                         />
                         {errors.username && <p>{errors.username}</p>}
                     </div>
                     <div>
-                        <input
+                        <Input
                             {...register('email')}
                             type="email"
-                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
                         />
                         {errors.email && <p>{errors.email}</p>}
                     </div>
 
                     <div>
                         <label htmlFor="conditions" className="flex items-center gap-2">
-                            <input
+                            <Input
                                 {...register('conditions')}
                                 type="checkbox"
-                                className="flex h-10 rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
                             />
                             <p className="flex-1">conditions</p>
 
@@ -87,7 +105,6 @@ const TestForm = ()=> {
                         <input
                             {...register('attachement')}
                             type="file"
-                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
                         />
                         {errors.attachement && <p>{errors.attachement}</p>}
                     </div>
@@ -103,8 +120,8 @@ const TestForm = ()=> {
                     <button className="border-2 rounded-md py-2 px-8" type="button" onClick={() => console.log('Current Values:', rest.getValues())}>log current values</button>
                 </div>
                 <div>
-                        <button className="border-2 rounded-md py-2 px-8" type="button" onClick={() => rest.reset()}>reset form with valid values</button>
-                    </div>
+                    <button className="border-2 rounded-md py-2 px-8" type="button" onClick={() => rest.reset()}>reset form with valid values</button>
+                </div>
                 <div>
                     <button className="border-2 rounded-md py-2 px-8" type="button" onClick={() => rest.setError('username', 'name is required')}>set error</button>
                 </div>
@@ -116,4 +133,4 @@ const TestForm = ()=> {
     )
 }
 
-export {TestForm};
+export { FormWithValidation as TestForm };

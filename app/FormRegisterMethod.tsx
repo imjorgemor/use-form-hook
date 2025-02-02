@@ -1,7 +1,7 @@
 import React from "react"
 import { useFormHook } from "../src/useFormHook"
 
-export const RegisterForm = () => {
+export const FormRegisterMethod = () => {
     const { register, handleSubmit } = useFormHook({
         defaultValues: {
             firstName: "",
