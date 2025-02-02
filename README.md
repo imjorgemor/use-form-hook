@@ -14,11 +14,11 @@ Performant, flexible and extensible forms with easy-to-use validation.
 
 ✅🧪  unregister (pending to develop options for v2)
 
-✅    formState (pending to incorporate isValidating, validatingFields, isLoading for v2)
+✅🧪  formState (pending to incorporate isValidating, validatingFields, isLoading for v2)
 
 ✅🧪  watch
 
-✅    handleSubmit
+✅🧪  handleSubmit
 
 ✅🧪  reset (pending develop keep state options)
 
@@ -26,7 +26,7 @@ Performant, flexible and extensible forms with easy-to-use validation.
 
 ✅🧪  setError (pending to incorporate if should focus or nah)
 
-✅🧪   clearErrors
+✅🧪  clearErrors
 
 ✅🧪  setValue (pending add options if should validate, should dirty, should touch)
 
