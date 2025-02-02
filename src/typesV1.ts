@@ -36,7 +36,7 @@ export type DefaultValues<TFieldValues> = DeepPartial<TFieldValues>;
 
 // resolver
 export type Resolver<TFieldValues extends FieldValues> = Partial<
-    Record<FieldName<TFieldValues>, (value: any) => false | string>
+    Record<FieldName<TFieldValues>, (value: any, ctx?:any) => false | string>
 >;
 
 //useForm and formControl
