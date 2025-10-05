@@ -62,6 +62,7 @@ export type Control<
     _onChange: (event: ChangeEventHandler) => Promise<void>
     _reset: UseFormReset<TFieldValues>
     _setErrors: (errors: Partial<Record<keyof TFieldValues, string>>) => void
+    _setFocus: UseFormSetFocus<TFieldValues>
     _updateIsDirty: () => void;
     _updateIsValid: (updateState?: boolean) => Promise<void>;
     _updateTouchedAndDirty: (field: keyof TFieldValues) => void
@@ -86,6 +87,7 @@ export type UseFormReturn<TFieldValues extends FieldValues = FieldValues> = {
     formState: FormState<TFieldValues>;
     getFieldState: UseFormGetFieldState<TFieldValues>;
     getValues: UseFormGetValues<TFieldValues>;
+    getTouchedFields: UseFormGetTouchedFields<TFieldValues>;
     handleSubmit: UseFormHandleSubmit<TFieldValues>;
     register: UseFormRegister<TFieldValues>;
     reset: UseFormReset<TFieldValues>;
@@ -100,6 +102,8 @@ export type UseFormReturn<TFieldValues extends FieldValues = FieldValues> = {
 
 // methods
 export type UseFormGetValues<TFieldValues extends FieldValues> = () => TFieldValues;
+
+export type UseFormGetTouchedFields<TFieldValues extends FieldValues> = () => Partial<Record<keyof TFieldValues, boolean>>;
 
 export type ChangeEventHandler = {
     target: any;
