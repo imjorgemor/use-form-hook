@@ -1,4 +1,3 @@
-import React from "react"
 import { useFormHook } from "../src/useFormHook"
 
 export const FormRegisterMethod = () => {

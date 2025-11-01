@@ -174,7 +174,7 @@ export function createFormControl<TFieldValues extends FieldValues = FieldValues
   };
 
   // form value management
-  const getValues: UseFormGetValues<TFieldValues> = () => ({... _formValues } as TFieldValues);
+  const getValues: UseFormGetValues<TFieldValues> = () => ({ ..._formValues } as TFieldValues);
 
   const watch: Watch<TFieldValues> = <TFieldName extends keyof TFieldValues>(
     names: TFieldName | TFieldName[]
@@ -271,7 +271,6 @@ export function createFormControl<TFieldValues extends FieldValues = FieldValues
     // fill formState error
     if (fieldError) {
       setError(name, fieldError);
-      _updateIsValid(true);
     } else {
       if (_namesWatched.has(name)) {
         valuesSubject.next({ name, value });
@@ -280,7 +279,6 @@ export function createFormControl<TFieldValues extends FieldValues = FieldValues
     // remove error if previously there is an error but is already fixed
     if (_formState.errors[name] && !fieldError) {
       clearErrors(name);
-      _updateIsValid(true);
     }
     _updateIsValid(true);
   };
@@ -460,7 +458,7 @@ export function createFormControl<TFieldValues extends FieldValues = FieldValues
     _formState.isDirty = false;
     // rest formState
     _formState.touchedFields = {};
-    stateSubject.next({ dirtyFields: {}, errors: {}, isValid: props.resolver ? false : true, isDirty: false, touchedFields: {}, isSubmitted: false, isSubmitSuccessful: false, submitCount: 0 , disabled: _formState.disabled  });
+    stateSubject.next({ dirtyFields: {}, errors: {}, isValid: props.resolver ? false : true, isDirty: false, touchedFields: {}, isSubmitted: false, isSubmitSuccessful: false, submitCount: 0, disabled: _formState.disabled });
   };
 
   const trigger: UseFormTrigger<TFieldValues> = async (name?) => {
